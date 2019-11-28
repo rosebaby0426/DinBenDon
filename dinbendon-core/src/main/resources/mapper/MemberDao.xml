@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.christine.dinbendon.dao.MemberDao">
+  <resultMap id="BaseResultMap" type="com.christine.dinbendon.model.po.Member">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="account" jdbcType="VARCHAR" property="account" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+    <result column="last_login_time" jdbcType="TIMESTAMP" property="lastLoginTime" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    id,account,password,`name`,create_time,last_login_time,status
+  </sql>
+
+  
+  <select id="login" resultMap="BaseResultMap">
+    select 
+    id, account, name, create_time, last_login_time
+    from member
+    where account = #{account}
+    and password = #{password}
+  </select>
+  
+  <update id="update" parameterType="com.christine.dinbendon.model.po.Member" >
+    update member
+    <set>
+      <if test="password != null and password != ''">password = #{password},</if>
+      <if test="name != null">name = #{name},</if>
+    </set>
+    where account = #{account}
+  </update>
+  
+  <update id="updateLogin" parameterType="com.christine.dinbendon.model.po.Member">
+    update member
+    set 
+    last_login_time = #{lastLoginTime}
+    where account = #{account}
+  </update>
+  
+</mapper>
