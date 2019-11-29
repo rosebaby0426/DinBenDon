@@ -11,7 +11,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface MemberDao {
 
-    Member login(String account,String password);
+    Member login(Member member);
 
     void updateLogin(Member member);
+
+    void update(Member member);
 }

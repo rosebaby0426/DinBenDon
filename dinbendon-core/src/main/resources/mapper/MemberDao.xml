@@ -16,25 +16,24 @@
   </sql>
 
   
-  <select id="login" resultMap="BaseResultMap">
+  <select id="login" resultMap="BaseResultMap" parameterType="com.christine.dinbendon.model.po.Member">
     select 
     id, account, name, create_time, last_login_time
-    from member
-    where account = #{account}
-    and password = #{password}
+    from `member`
+    where account = #{account} and password = #{password}
   </select>
   
   <update id="update" parameterType="com.christine.dinbendon.model.po.Member" >
-    update member
+    update `member`
     <set>
       <if test="password != null and password != ''">password = #{password},</if>
-      <if test="name != null">name = #{name},</if>
+      <if test="name != null">name = #{name}</if>
     </set>
     where account = #{account}
   </update>
   
   <update id="updateLogin" parameterType="com.christine.dinbendon.model.po.Member">
-    update member
+    update `member`
     set 
     last_login_time = #{lastLoginTime}
     where account = #{account}

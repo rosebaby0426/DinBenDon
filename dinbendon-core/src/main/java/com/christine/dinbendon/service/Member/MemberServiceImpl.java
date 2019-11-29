@@ -25,7 +25,7 @@ public class MemberServiceImpl implements MemberService {
             throw new ServiceException("帳號或密碼不可为空");
         }
 
-        Member mem = memberDao.login(member.getAccount(),member.getPassword());
+        Member mem = memberDao.login(member);
 
         if(mem == null){
             throw new ServiceException("帳號或密碼錯誤");
