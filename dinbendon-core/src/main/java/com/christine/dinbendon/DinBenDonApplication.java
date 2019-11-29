@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Bean;
  * Christine 2019/11/28
  */
 @SpringBootApplication
-@MapperScan(basePackages = {"com.christine.dinbendon.*"})
+@MapperScan(basePackages = {"com.christine.dinbendon.*"})//mybatis掃描路徑
 public class DinBenDonApplication {
 
     @Value("${server.tomcat.protocol:org.apache.coyote.http11.Http11Nio2Protocol}")

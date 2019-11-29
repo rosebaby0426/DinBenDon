@@ -25,8 +25,7 @@ public class MemberDaoTest {
 
     @Test
     public void testLogin(){
-        String psw = "123456";
-        Member member = Member.builder().account("Admin").password(psw).build();
+        Member member = Member.builder().account("Admin").password("123456").build();
         System.out.println(member.getPassword());
         member = memberDao.login(member);
         if(member == null){
